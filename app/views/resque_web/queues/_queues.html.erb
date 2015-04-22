@@ -1,4 +1,13 @@
 <h1>Queues</h1>
 <p class="intro">The list below contains all the registered queues with the number of jobs currently in the queue. Select a queue from above to view all jobs currently pending on the queue.</p>
 
+<div class="show_queues_container">
+  <div id="button_container">
+    <button class="show_hide_empty_queues">Show/Hide Empty Queues</button>
+  </div>
+  <div class="loading_container">
+    <%= image_tag("loading.gif", :class => "loading_gif") %>
+  </div>
+</div>
+
 <%= render :partial => queues_partial_name %>

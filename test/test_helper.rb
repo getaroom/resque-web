@@ -1,5 +1,7 @@
+require 'dotenv'
+Dotenv.load!
+
 require 'redcard'
-require 'profiler' if RedCard.check :rubinius
 
 require 'coveralls'
 Coveralls.wear! 'rails'
@@ -20,4 +22,8 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 # Load fixtures from the engine
 if ActiveSupport::TestCase.method_defined?(:fixture_path=)
   ActiveSupport::TestCase.fixture_path = File.expand_path("../fixtures", __FILE__)
+end
+
+ActionDispatch::IntegrationTest.app = Rack::Builder.new do
+  run Rails.application
 end
